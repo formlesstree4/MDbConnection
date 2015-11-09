@@ -6,16 +6,25 @@
     /// </summary>
     /// <typeparam name="T">Any type.</typeparam>
     /// <example>
-    ///     The RedisQueue class in DA.Caching uses the Option{T} class as part of its public API. Here's a simple explanation of how to use that:
+    ///     Consider the following (mediocre) class:
     /// <c>
     /// <![CDATA[
-    ///     var rQueue = new RedisQueue<SomeObject>("RedisConnectionString", "CollectionOfStrings");
-    ///     var attemptToDequeue = rQueue.Dequeue(); // Dequeue in this case returns Option<SomeObject>
+    ///     public sealed class RedisQueue{T}
+    ///     {
+    ///         public Option{T} Dequeue{T}() { /* Implementation Details */ }    
+    ///         public void Enqueue{T}(T value) { /* Implementation Details /* }
+    ///         public RedisQueue(string connectionString, string queueName) { }
+    ///     }
+    /// ]]>
+    ///     Assuming that the implementor of the RedisQueue{T} class did everything properly, this is how you'd consume it:
+    /// <![CDATA[
+    ///     var rQueue = new RedisQueue{TValue}("RedisConnectionString", "CollectionOfStrings");
+    ///     var attemptToDequeue = rQueue.Dequeue();
     ///     if (attemptToDequeue.HasValue)
     ///     {
     ///         // Either of these approaches is valid
     ///         var resultOne = attemptToDequeue.Value;
-    ///         var resultTwo = (SomeObject)attemptToDequeue;
+    ///         var resultTwo = (TValue)attemptToDequeue;
     ///     }
     /// ]]>
     /// </c>
