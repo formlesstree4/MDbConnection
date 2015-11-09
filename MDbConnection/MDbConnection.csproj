@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.txt" />
