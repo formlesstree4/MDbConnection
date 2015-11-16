@@ -43,23 +43,25 @@ namespace System.Data.Tracking
         ///     Creates a new instance of the <see cref="RedisTracker"/>.
         /// </summary>
         /// <param name="connectionString">The connection string to the Redis server.</param>
-        /// <param name="collectionName">The name of the collection that will store the aggregate results in Redis.</param>
         /// <param name="flushInterval">An optional <see cref="TimeSpan"/> that indicates how frequently <see cref="RedisTracker"/> will aggregate and flush results to the Redis server.</param>
-        public RedisTracker(string connectionString, string collectionName = DefaultCollectionName, TimeSpan? flushInterval = null) :
-            this(ConnectionMultiplexerPool.GetMultiplexer(connectionString), collectionName, flushInterval) { }
+        /// <param name="collectionName">The name of the collection that will store the aggregate results in Redis.</param>
+        public RedisTracker(string connectionString, Option<TimeSpan> flushInterval, string collectionName = DefaultCollectionName) :
+            this(ConnectionMultiplexerPool.GetMultiplexer(connectionString), flushInterval, collectionName) { }
 
         /// <summary>
         ///     Creates a new instance of the <see cref="RedisTracker"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IConnectionMultiplexer"/> that has already established a connection to the Redis server.</param>
-        /// <param name="collectionName">The name of the collection that will store the aggregate results in Redis.</param>
         /// <param name="flushInterval">An optional <see cref="TimeSpan"/> that indicates how frequently <see cref="RedisTracker"/> will aggregate and flush results to the Redis server.</param>
-        public RedisTracker(IConnectionMultiplexer connection, string collectionName = DefaultCollectionName, TimeSpan? flushInterval = null)
+        /// <param name="collectionName">The name of the collection that will store the aggregate results in Redis.</param>
+        public RedisTracker(IConnectionMultiplexer connection, Option<TimeSpan> flushInterval, string collectionName = DefaultCollectionName)
         {
-            flushInterval = flushInterval ?? DefaultFlushTimer;
             _collectionName = collectionName;
             _connection = connection;
-            _backgroundFlushTimer = new Timer(flushInterval.Value.TotalMilliseconds) { AutoReset = false };
+            _backgroundFlushTimer = new Timer { AutoReset = false };
+            _backgroundFlushTimer.Interval = flushInterval.HasValue ?
+                flushInterval.Value.TotalMilliseconds :
+                DefaultFlushTimer.TotalMilliseconds;
             _backgroundFlushTimer.Elapsed += SaveHandler;
             _backgroundFlushTimer.Enabled = true;
         }
