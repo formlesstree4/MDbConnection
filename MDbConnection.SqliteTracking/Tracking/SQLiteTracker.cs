@@ -17,6 +17,16 @@ namespace System.Data.Tracking
     public sealed class SQLiteTracker : IDbObserver, IDisposable
     {
 
+        private const string DefaultDatabaseName = "SqliteTracker";
+        private static readonly TimeSpan DefaultFlushTimer =
+#if DEBUG
+            TimeSpan.FromMinutes(1);
+#else
+            TimeSpan.FromMinutes(15);
+#endif
+
+
+
         private readonly List<Trail> _items = new List<Trail>();
         private readonly SQLiteConnection _connection;
         private readonly Timer _backgroundFlushTimer;
@@ -26,19 +36,19 @@ namespace System.Data.Tracking
         /// </summary>
         public static SQLiteTracker Default { get; } = new SQLiteTracker();
 
-        #region IDbObserver
+#region IDbObserver
 
         /// <summary>
         ///     Gets the callback to invoke for tracking.
         /// </summary>
         public Func<Trail, Task> Callback { get; private set; }
 
-        #endregion IDbObserver
+#endregion IDbObserver
 
         /// <summary>
         ///     Creates a new instance of <see cref="SQLiteTracker"/>.
         /// </summary>
-        public SQLiteTracker() : this("SqliteTracker", TimeSpan.FromMinutes(15)) { }
+        public SQLiteTracker() : this(DefaultDatabaseName, DefaultFlushTimer) { }
 
         /// <summary>
         ///     Creates a new instance of <see cref="SQLiteTracker"/>.

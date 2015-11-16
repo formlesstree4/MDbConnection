@@ -27,11 +27,9 @@ namespace System.Data.Caching
         /// <returns><see cref="Option"/> of <see cref="IReadOnlyCollection{T}"/></returns>
         public Option<IReadOnlyCollection<T>> GetCollection<T>(string key)
         {
-            if (MemoryCache.Default.Contains(key))
-            {
-                var c = MemoryCache.Default.Get(key) as List<T>;
+            List<T> c;
+            if (MemoryCache.Default.Contains(key) && ((c = MemoryCache.Default.Get(key) as List<T>) != null))
                 return new Option<IReadOnlyCollection<T>>(c.AsReadOnly());
-            }
             return Option.Empty;
         }
 
