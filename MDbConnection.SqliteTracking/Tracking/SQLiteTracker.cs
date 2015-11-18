@@ -1,6 +1,7 @@
 ﻿using Dapper;
+using MDbConnection.Common;
+using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using System.Timers;
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
-namespace System.Data.Tracking
+namespace MDbConnection.Tracking
 {
 
     /// <summary>

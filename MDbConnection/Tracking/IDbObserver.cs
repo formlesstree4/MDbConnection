@@ -1,7 +1,8 @@
-﻿using System.Data.Common;
+﻿using MDbConnection.Common;
+using System;
 using System.Threading.Tasks;
 
-namespace System.Data.Tracking
+namespace MDbConnection.Tracking
 {
 
     /// <summary>

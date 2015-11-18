@@ -1,7 +1,7 @@
 ﻿using StackExchange.Redis;
 using System.Collections.Concurrent;
 
-namespace System.Data
+namespace MDbConnection
 {
 
     /// <summary>

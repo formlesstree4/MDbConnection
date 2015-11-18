@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data.Extensions;
+﻿using MDbConnection.Extensions;
+using System;
+using System.Collections.Generic;
 using System.Runtime.Caching;
 
-namespace System.Data.Caching
+namespace MDbConnection.Caching
 {
 
     /// <summary>

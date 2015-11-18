@@ -1,8 +1,11 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Data.Common;
+using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace System.Data.Common
+namespace MDbConnection.Common
 {
 
     /// <summary>
@@ -52,7 +55,7 @@ namespace System.Data.Common
             {
                 // Let's try this the real easy way.
                 var fileNameViaCommandline = Environment.GetCommandLineArgs()[0];
-                if (!string.IsNullOrWhiteSpace(fileNameViaCommandline) && IO.File.Exists(fileNameViaCommandline)) return fileNameViaCommandline;
+                if (!string.IsNullOrWhiteSpace(fileNameViaCommandline) && File.Exists(fileNameViaCommandline)) return fileNameViaCommandline;
 
                 // Well, that way didn't work. Let's try the 2nd easy (but expensive) way:
                 var entryAssembly = Assembly.GetEntryAssembly();

@@ -7,7 +7,7 @@
     <ProjectGuid>{9599996F-F415-404B-88A0-1A7E33E0FC13}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.Data</RootNamespace>
+    <RootNamespace>MDbConnection</RootNamespace>
     <AssemblyName>MDbConnection.SqliteTracking</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

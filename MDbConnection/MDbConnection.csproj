@@ -7,7 +7,7 @@
     <ProjectGuid>{DB10D8D1-4EF4-4B19-9376-32BDE0F1889A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.Data</RootNamespace>
+    <RootNamespace>MDbConnection</RootNamespace>
     <AssemblyName>MDbConnection</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

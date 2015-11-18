@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using MDbConnection.Common;
+using Newtonsoft.Json;
 using StackExchange.Redis;
+using System;
 using System.Collections.Generic;
-using System.Data.Extensions;
-using System.Data.Common;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Linq;
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
-namespace System.Data.Tracking
+namespace MDbConnection.Tracking
 {
 
     /// <summary>

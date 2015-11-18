@@ -1,5 +1,6 @@
-﻿using System.Data.Common;
-using System.Data.Extensions;
+﻿using MDbConnection.Common;
+using MDbConnection.Extensions;
+using System.Data.Common;
 
 namespace System.Data
 {

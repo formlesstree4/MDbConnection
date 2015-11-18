@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using MDbConnection.Caching.Hashing;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Caching.Hashing;
+using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace System.Data.Extensions
+namespace MDbConnection.Extensions
 {
 
     /// <summary>

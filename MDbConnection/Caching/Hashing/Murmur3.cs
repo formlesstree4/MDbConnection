@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace System.Data.Caching.Hashing
+namespace MDbConnection.Caching.Hashing
 {
 
     /// <summary>
